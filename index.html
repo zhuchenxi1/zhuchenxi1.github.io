@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-tensor" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/19/tensor/" class="article-date">
+  <time class="dt-published" datetime="2021-05-19T09:29:57.000Z" itemprop="datePublished">2021-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/19/tensor/">tensor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tfcy694/article/details/85338745">Tensor和tensor的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42782150/article/details/106116082">PyTorch中关于backward、grad、autograd的计算原理的深度剖析</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42782150/article/details/106116082">PyTorch中关于backward、grad、autograd的计算原理的深度剖析</a></p>
+<h2 id="tensor是什么？"><a href="#tensor是什么？" class="headerlink" title="tensor是什么？"></a>tensor是什么？</h2><p>Tensor(张量)，是pytorch的一种重要的数据结构。</p>
+<p>Tensor可以理解为多维数组，0维就是一个数（标量），一维就是一个向量，二维就是矩阵，当然也可以有三维(立方体)，四维，等更高维的Tensor。</p>
+<h2 id="关于梯度"><a href="#关于梯度" class="headerlink" title="关于梯度"></a>关于梯度</h2><ul>
+<li><p>梯度的定义：</p>
+<p>函数在某一点的梯度是这样一个<strong>向量</strong>，它的方向与取得<strong>最大</strong>方向导数的方向一致，而它的模为方向导数的最大值。</p>
+<p>梯度即函数在某一点最大的方向导数，函数沿梯度方向函数有最大的变化率</p>
+</li>
+</ul>
+<h2 id="tensor的属性"><a href="#tensor的属性" class="headerlink" title="tensor的属性"></a>tensor的属性</h2><ul>
+<li><p>shape</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor([<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(x.shape)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([<span class="number">1</span>])</span><br></pre></td></tr></table></figure></li>
+<li><p>size</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor([<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(x.size())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([<span class="number">1</span>])</span><br></pre></td></tr></table></figure></li>
+<li><p>dim</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor([<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(x.dim())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>注意和零维区别：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(x.dim())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></li>
+<li><p>numel</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor([<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(x.numel())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.zeros([<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(x.numel())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure></li>
+<li><p>item</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(x.item())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor([<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(x.item())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor([<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(x.item())</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ValueError: only one element tensors can be converted to Python scalars</span><br></pre></td></tr></table></figure>
+
+<p>一个tensor通常还会记录这些属性：</p>
+<ul>
+<li><p><code>data</code>: 即存储的数据信息</p>
+</li>
+<li><p><code>requires_grad</code>: 设置为True，则表示该tensor需要求导。</p>
+<p>注意：该属性具有传递性。如：x.requires_grad == True , y.requires_grad == False，z=f(x,y),则z.requires_grad ==True</p>
+</li>
+<li><p><code>grad</code>: 该Tensor的梯度值， <strong>每次在计算backward时都需要将前一时刻的梯度归零，否则梯度值会一直累加。</strong></p>
+</li>
+<li><p>grad_fn: 用于指示梯度函数是哪种类型，叶子节点通常为None，只有结果节点的grad_fn才有效。</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.tensor(<span class="number">1.</span>, requires_grad=<span class="literal">True</span>)  <span class="comment"># 创建自变量x,并赋值为3</span></span><br><span class="line">y = x**<span class="number">2</span>  <span class="comment"># 创建中间/结果变量</span></span><br><span class="line">z = x + x  <span class="comment"># 创建中间/结果变量</span></span><br><span class="line"><span class="built_in">print</span>(x.grad_fn)</span><br><span class="line"><span class="built_in">print</span>(y.grad_fn)</span><br><span class="line"><span class="built_in">print</span>(z.grad_fn)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">&lt;PowBackward0 object at 0x7fb38a12ba50&gt;</span><br><span class="line">&lt;AddBackward0 object at 0x7fb38a12b950&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>is_leaf</code>: 用来指示该Tensor是否是叶子节点</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建tensor"><a href="#创建tensor" class="headerlink" title="创建tensor"></a>创建tensor</h2><ol>
+<li><p>最基本的直接构造</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">1</span>])</span><br></pre></td></tr></table></figure></li>
+<li><p>初始值都为0</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = torch.zeros([<span class="number">5</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tensor([[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">        [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]])</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="判断变量是否为tensor类型"><a href="#判断变量是否为tensor类型" class="headerlink" title="判断变量是否为tensor类型"></a>判断变量是否为tensor类型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.is_tensor(x)</span><br></pre></td></tr></table></figure>
+
+<h2 id="计算tensor的导数"><a href="#计算tensor的导数" class="headerlink" title="计算tensor的导数"></a>计算tensor的导数</h2><p>如果我们要计算某个tensor的导数，我们需要设置该tensor的参数<code>.requires_grad</code>的属性为true。</p>
+<p><strong>在PyTorch中，我们自己定义的变量，我们称之为叶子节点(leaf nodes)，而基于叶子节点得到的中间或最终变量则可称之为结果节点</strong></p>
+<h2 id="torch-tensor和torch-Tensor区别"><a href="#torch-tensor和torch-Tensor区别" class="headerlink" title="torch.tensor和torch.Tensor区别"></a>torch.tensor和torch.Tensor区别</h2><p>在运行如下代码时，发现把torch.tensor换成torch.Tensor会出错</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"></span><br><span class="line">x = torch.tensor(<span class="number">1.</span>, requires_grad=<span class="literal">True</span>) <span class="comment"># 不能用torch.Tensor</span></span><br><span class="line">w = torch.tensor(<span class="number">2.</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = torch.tensor(<span class="number">3.</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">y = w*x + b</span><br><span class="line">y.backward()</span><br><span class="line"><span class="comment"># Print out the gradients.</span></span><br><span class="line"><span class="built_in">print</span>(x.grad)    <span class="comment"># x.grad = 2 </span></span><br><span class="line"><span class="built_in">print</span>(w.grad)    <span class="comment"># w.grad = 1 </span></span><br><span class="line"><span class="built_in">print</span>(b.grad)    <span class="comment"># b.grad = 1 </span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>也就是说torch.tensor和torch.Tensor存在一定区别。</p>
+<ul>
+<li><p>torch.Tensor()是python类，更明确地说，是默认张量类型torch.FloatTensor()的别名，torch.Tensor([1,2])会调用Tensor类的构造函数__init__，生成单精度浮点类型的张量</p>
+<p>而torch.tensor()仅仅是python函数，函数原型是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.tensor(data, dtype=<span class="literal">None</span>, device=<span class="literal">None</span>, requires_grad=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意：若一个节点requires_grad被设置为True，那么所有依赖它的节点的requires_grad都为True。</p>
+<p>实际上torch.Tensor()不能带requires_grad=True这样的参数。</p>
+<p>代码写成这样就没有问题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.Tensor([<span class="number">1.0</span>])</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/19/tensor/" data-id="ckoyabd9u0000r04g970n8ay8" data-title="tensor" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pytorch%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="tag">pytorch初学笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-解决安装nb_conda时出现CondaHttpError问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/18/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85nb_conda%E6%97%B6%E5%87%BA%E7%8E%B0CondaHttpError%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2021-05-18T11:26:03.000Z" itemprop="datePublished">2021-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/18/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85nb_conda%E6%97%B6%E5%87%BA%E7%8E%B0CondaHttpError%E9%97%AE%E9%A2%98/">解决安装nb_conda出现HttpError问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>折腾jupyter notebook时，要安装nb_conda插件。</p>
+<p>终端输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install nb_conda</span><br></pre></td></tr></table></figure>
+
+<p>结果出现了CondaHTTPError。重试，又出现了错误InvalidSpecError: Invalid spec: =2.7</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>conda删除清华源，换回原源:</p>
+<p>终端输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">换回默认源：conda config --remove-key channels</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/18/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85nb_conda%E6%97%B6%E5%87%BA%E7%8E%B0CondaHttpError%E9%97%AE%E9%A2%98/" data-id="ckoyabda00003r04gbsa5atkr" data-title="解决安装nb_conda出现HttpError问题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">软件安装/环境配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关于github" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/03/03/%E5%85%B3%E4%BA%8Egithub/" class="article-date">
+  <time class="dt-published" datetime="2020-03-03T12:30:55.000Z" itemprop="datePublished">2020-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/03/03/%E5%85%B3%E4%BA%8Egithub/">关于github</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="如何把本地文件上传到github"><a href="#如何把本地文件上传到github" class="headerlink" title="如何把本地文件上传到github"></a>如何把本地文件上传到github</h1><p>首先在终端cd到本地仓库的位置。</p>
+<ul>
+<li><p>如果是把本地仓库所有的文件都上传：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot; //引号里是对提交的描述</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></li>
+<li><p>如果是提交本地仓库的部分文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名</span><br><span class="line">git commit -m &quot;first commit&quot; //引号里是对提交的描述</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h1 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h1></li>
+<li><p>Followers:粉丝</p>
+</li>
+<li><p>watch : 对于别人的仓库默认是not watching。改成watching之后就可以收到这个仓库的动态</p>
+</li>
+<li><p>Star :类似于喜欢</p>
+</li>
+<li><p>Fork : 克隆仓库，用于之后pr</p>
+</li>
+<li><p>Issues:类似留言区。 new issue提出问题，可以由自己或项目所有者关闭。关闭的问题仍可被看到。</p>
+</li>
+<li><p>pull requests : 对开源项目做贡献</p>
+</li>
+<li><p>Projects : 项目进度管理</p>
+</li>
+<li><p>Wiki : 对项目的介绍</p>
+</li>
+<li><p>Insights  : 项目的统计信息</p>
+</li>
+<li><p>Settings </p>
+<ul>
+<li>GitHub pages : 提供网站服务</li>
+<li>Webhooks : </li>
+<li>danger zone : 可以将仓库变成private / public 或者删除仓库</li>
+</ul>
+</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/03/%E5%85%B3%E4%BA%8Egithub/" data-id="ckoyabd9y0001r04g99g2aj3v" data-title="关于github" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-我的第一篇博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2020-02-12T07:41:45.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>第一篇博客</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/02/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckoyabda10004r04g9iso3usl" data-title="我的第一篇博客" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="tag">pytorch初学笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">软件安装/环境配置</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/pytorch%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">pytorch初学笔记</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">软件安装/环境配置</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/19/tensor/">tensor</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/18/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85nb_conda%E6%97%B6%E5%87%BA%E7%8E%B0CondaHttpError%E9%97%AE%E9%A2%98/">解决安装nb_conda出现HttpError问题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/03/%E5%85%B3%E4%BA%8Egithub/">关于github</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
